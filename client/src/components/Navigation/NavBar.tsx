@@ -1,8 +1,9 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, TextField } from '@mui/material'
-import { primary, secondary } from '../theme'
+import { primary, secondary } from '../../theme'
 import SocialMediaLinks from './SocialMediaLinks'
+import NavLinks from './NavLinks'
 
 const NavBar: React.FC = () => {
   const styles = {
@@ -36,6 +37,10 @@ const NavBar: React.FC = () => {
       fontSize: '35px',
       marginTop: '6px',
     },
+    navLinks: {
+      gridColumn: '1/4',
+      justifySelf: 'center',
+    },
   }
 
   const handleSearch = (event: any) => {
@@ -67,6 +72,9 @@ const NavBar: React.FC = () => {
             <SearchIcon color="secondary" style={styles.searchIcon} />
           </IconButton>
         </div>
+      </div>
+      <div style={styles.navLinks}>
+        <NavLinks />
       </div>
     </div>
   )

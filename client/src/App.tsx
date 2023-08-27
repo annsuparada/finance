@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import { theme } from './theme'
 import './App.css'
-import NavBar from './components/NavBar'
+import NavBar from './components/Navigation/NavBar'
 
 const App: React.FC = () => {
   return (
