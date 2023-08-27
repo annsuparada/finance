@@ -32,6 +32,10 @@ const NavBar: React.FC = () => {
       border: `1px solid ${secondary}`,
       borderRadius: '4px',
     },
+    searchIcon: {
+      fontSize: '35px',
+      marginTop: '6px',
+    },
   }
 
   const handleSearch = (event: any) => {
@@ -56,14 +60,12 @@ const NavBar: React.FC = () => {
             placeholder="Search..."
             onChange={handleSearch}
             InputProps={{
-              endAdornment: (
-                <IconButton aria-label="search">
-                  <SearchIcon color="primary" />
-                </IconButton>
-              ),
               style: styles.inputProps,
             }}
           />
+          <IconButton aria-label="search">
+            <SearchIcon color="secondary" style={styles.searchIcon} />
+          </IconButton>
         </div>
       </div>
     </div>
