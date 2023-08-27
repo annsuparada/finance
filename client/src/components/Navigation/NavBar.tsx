@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, TextField } from '@mui/material'
 import { primary, secondary } from '../../theme'
@@ -54,7 +55,9 @@ const NavBar: React.FC = () => {
         <SocialMediaLinks />
       </div>
       <div style={styles.logo}>
-        <h1 style={{ color: secondary }}>Finance Something</h1>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <h1 style={{ color: secondary }}>Finance Something</h1>
+        </Link>
       </div>
       <div style={styles.searchBar}>
         <div style={styles.searchBarBorder}>
