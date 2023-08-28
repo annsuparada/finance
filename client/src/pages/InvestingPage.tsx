@@ -1,7 +1,12 @@
 import React from 'react'
+import Articles from '../components/Articles'
 
 const InvestingPage: React.FC = () => {
-  return <h1>Investing Page</h1>
+  return (
+    <div>
+      <Articles />
+    </div>
+  )
 }
 
 export default InvestingPage
