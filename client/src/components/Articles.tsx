@@ -3,7 +3,12 @@ import { primary } from '../theme'
 import BigCard from './BigCard'
 import SmallCard from './SmallCard'
 
-const Articles: React.FC = () => {
+interface ArticlesProps {
+  articles: Article[]
+  loading: boolean
+}
+
+const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
   const styles = {
     grid: {
       display: 'grid',
@@ -26,28 +31,62 @@ const Articles: React.FC = () => {
       fontSize: '45px',
     },
   }
+
   return (
     <div>
       <div style={styles.divider}>
         <h1 style={styles.heading}>Investing</h1>
       </div>
-      <div style={styles.grid}>
-        <div style={styles.item1}>
-          <BigCard />
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div style={styles.grid}>
+          {articles.map((item, index) => (
+            <>
+              {index === 1 ? (
+                <div style={styles.item1}>
+                  <BigCard
+                    key={item.id}
+                    id={item.id}
+                    alt={item.alt}
+                    title={item.title}
+                    imageURL={item.imageURL}
+                    articleContent={item.articleContent}
+                    slug={item.slug}
+                  />
+                </div>
+              ) : (
+                <SmallCard
+                  key={item.id}
+                  id={item.id}
+                  alt={item.alt}
+                  title={item.title}
+                  imageURL={item.imageURL}
+                  articleContent={item.articleContent}
+                  slug={item.slug}
+                />
+              )}
+            </>
+          ))}
         </div>
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
-      </div>
+      )}
+
       <div style={styles.divider}>
         <h1 style={styles.heading}>Latest</h1>
       </div>
       <div style={styles.grid}>
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
+        {articles.map((item, index) => (
+          <SmallCard
+            key={item.id}
+            id={item.id}
+            alt={item.alt}
+            title={item.title}
+            imageURL={item.imageURL}
+            articleContent={item.articleContent}
+            slug={item.slug}
+          />
+        ))}
       </div>
     </div>
   )
