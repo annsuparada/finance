@@ -1,7 +1,7 @@
 import React from 'react'
-import { primary } from '../theme'
-import BigCard from './BigCard'
-import SmallCard from './SmallCard'
+import { primary } from '../../theme'
+import BigCard from '../molecular/BigCard'
+import SmallCard from '../molecular/SmallCard'
 
 interface ArticlesProps {
   articles: Article[]

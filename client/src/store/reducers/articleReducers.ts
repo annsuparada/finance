@@ -1,14 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchArticles } from '../actions/articleActions'
+import { fetchArticleBySlug, fetchArticles } from '../actions/articleActions'
 
 interface ArticleState {
   articles: Article[]
+  article: Article | undefined
   loading: boolean
   error?: string
 }
 
 const initialState: ArticleState = {
   articles: [],
+  article: {
+    id: '',
+    title: '',
+    imageURL: '',
+    alt: '',
+    articleContent: '',
+    slug: '',
+  },
   loading: false,
   error: '',
 }
@@ -42,8 +51,23 @@ const articlesSlice = createSlice({
             ? action.payload
             : 'An error occurred'
       })
+      .addCase(fetchArticleBySlug.pending, (state) => {
+        state.loading = true
+        state.error = ''
+      })
+      .addCase(fetchArticleBySlug.fulfilled, (state, action) => {
+        state.loading = false
+        state.article = action.payload
+      })
+      .addCase(fetchArticleBySlug.rejected, (state, action) => {
+        state.loading = false
+        state.error =
+          typeof action.payload === 'string'
+            ? action.payload
+            : 'An error occurred'
+      })
   },
 })
 
-export { fetchArticles }
+export { fetchArticles, fetchArticleBySlug }
 export default articlesSlice.reducer

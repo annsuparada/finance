@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Articles from '../components/Articles'
+import ArticleList from '../components/Organism/ArticleList'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchArticles } from '../store/actions/articleActions'
 
@@ -13,7 +13,7 @@ const InvestingPage: React.FC = () => {
 
   return (
     <div>
-      <Articles articles={articles} loading={loading} />
+      <ArticleList articles={articles} loading={loading} />
     </div>
   )
 }

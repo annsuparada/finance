@@ -15,7 +15,7 @@ const SmallCard: React.FC<Article> = ({
 }) => {
   return (
     <Card sx={{ width: '100%' }}>
-      <CardActionArea>
+      <CardActionArea href={`/investing/${slug}`}>
         <CardMedia component="img" height="100%" image={imageURL} alt={alt} />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
