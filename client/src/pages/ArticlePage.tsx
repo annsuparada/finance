@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Loading from '../components/atom/Loading'
+import ImageHeader from '../components/atom/ImageHeader'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchArticleBySlug } from '../store/actions/articleActions'
 
@@ -23,6 +24,7 @@ const Article: React.FC = () => {
       ) : (
         <div>
           <h1>{slug}</h1>
+          <ImageHeader imageURL={article?.imageURL} alt={article?.alt} />
         </div>
       )}
     </div>
