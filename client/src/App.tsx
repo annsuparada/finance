@@ -8,22 +8,21 @@ import InvestingPage from './pages/InvestingPage'
 import CalculatorPage from './pages/CalculatorPage'
 import Footer from './components/Organism/Footer'
 import Article from './pages/ArticlePage'
+import Layout from './components/Layout'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <NavBar />
-        <div
-          style={{ minHeight: '58vh', maxWidth: '1250px', margin: '0 auto' }}
-        >
+        <Layout>
           <Routes>
             <Route path="/" element={<InvestingPage />} />
             <Route path="/investing" element={<InvestingPage />} />
             <Route path="/investing/:slug" element={<Article />} />
             <Route path="/calculator" element={<CalculatorPage />} />
           </Routes>
-        </div>
+        </Layout>
         <Footer />
       </Router>
     </ThemeProvider>
