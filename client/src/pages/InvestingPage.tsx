@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import MainWrapper from '../components/atom/MainWrapper'
 import ArticleList from '../components/Organism/ArticleList'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchArticles } from '../store/actions/articleActions'
@@ -12,9 +13,9 @@ const InvestingPage: React.FC = () => {
   }, [dispatch])
 
   return (
-    <div>
+    <MainWrapper>
       <ArticleList articles={articles} loading={loading} />
-    </div>
+    </MainWrapper>
   )
 }
 

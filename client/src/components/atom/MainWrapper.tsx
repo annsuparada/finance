@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 interface LayoutProps {
   children: ReactNode
 }
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const MainWrapper: React.FC<LayoutProps> = ({ children }) => {
   const styles = {
     container: {
       minHeight: '58vh',
@@ -14,4 +14,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return <div style={styles.container}>{children}</div>
 }
 
-export default Layout
+export default MainWrapper
