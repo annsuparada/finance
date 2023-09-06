@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
 
-interface LayoutProps {
+interface HeaderWrapperProps {
   children: ReactNode
 }
-const MainWrapper: React.FC<LayoutProps> = ({ children }) => {
+const MainWrapper: React.FC<HeaderWrapperProps> = ({ children }) => {
   const styles = {
     container: {
       minHeight: '58vh',

@@ -7,8 +7,9 @@ interface ImageHeaderProps {
 const ImageHeader: React.FC<ImageHeaderProps> = ({ imageURL, alt }) => {
   const styles = {
     container: {
-      width: '100%',
+      width: '1280px',
       height: '60vh',
+      margin: '0 auto',
       backgroundImage: `url(${imageURL})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
