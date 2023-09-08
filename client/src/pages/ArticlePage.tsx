@@ -3,20 +3,26 @@ import { useParams } from 'react-router-dom'
 import Loading from '../components/atom/Loading'
 import ImageHeader from '../components/atom/ImageHeader'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { fetchArticleBySlug } from '../store/actions/articleActions'
+import {
+  fetchArticleBySlug,
+  fetchArticles,
+} from '../store/actions/articleActions'
 import HeaderWrapper from '../components/atom/HeaderWeapper'
 import { secondary } from '../theme'
 import MainWrapper from '../components/atom/MainWrapper'
+import SmallCardList from '../components/molecular/SmallCardList'
 
 const Article: React.FC = () => {
   const { slug } = useParams()
   const dispatch = useAppDispatch()
   const article = useAppSelector((state) => state.articles.article)
+  const articles = useAppSelector((state) => state.articles.articles)
   const loading = useAppSelector((state) => state.articles.loading)
 
   useEffect(() => {
     if (slug) {
       dispatch(fetchArticleBySlug(slug) as any)
+      dispatch(fetchArticles() as any)
     }
   }, [dispatch, slug])
 
@@ -41,8 +47,13 @@ const Article: React.FC = () => {
       textAlign: 'center' as 'center',
     },
     p: {
-      fontSize: '28px',
+      fontSize: '22px',
+    },
+    contentWrapper: {
+      display: 'grid',
+      gridTemplateColumns: '3fr 1fr',
       marginTop: '2rem',
+      gap: '3rem',
     },
   }
   return (
@@ -70,7 +81,10 @@ const Article: React.FC = () => {
             </div>
           </HeaderWrapper>
           <MainWrapper>
-            <p style={styles.p}>{article?.articleContent}</p>
+            <div style={styles.contentWrapper}>
+              <p style={styles.p}>{article?.articleContent}</p>
+              <SmallCardList articles={articles} numberOfColumn={1} />
+            </div>
           </MainWrapper>
         </div>
       )}
