@@ -82,7 +82,12 @@ const Article: React.FC = () => {
           </HeaderWrapper>
           <MainWrapper>
             <div style={styles.contentWrapper}>
-              <p style={styles.p}>{article?.articleContent}</p>
+              {/* <p style={styles.p}>{article?.articleContent}</p> */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: article?.articleContent || '',
+                }}
+              />
               <SmallCardList articles={articles} numberOfColumn={1} />
             </div>
           </MainWrapper>
