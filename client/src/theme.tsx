@@ -69,7 +69,7 @@ export const theme = createTheme({
     },
     subtitle1: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
-      fontSize: '1rem',
+      fontSize: '1.1rem',
     },
     subtitle2: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
