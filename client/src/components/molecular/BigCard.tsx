@@ -11,7 +11,7 @@ const BigCard: React.FC<Article> = ({ alt, intro, imageURL, slug, title }) => {
       <CardActionArea href={`/investing/${slug}`}>
         <CardMedia component="img" height="100%" image={imageURL} alt={alt} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h4" component="div">
             {title}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">

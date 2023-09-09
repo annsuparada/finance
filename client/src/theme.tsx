@@ -27,4 +27,65 @@ export const theme = createTheme({
       main: success,
     },
   },
+  typography: {
+    fontFamily: ['Playfair Display', 'serif'].join(','),
+    h1: {
+      fontFamily: 'Playfair Display',
+      fontSize: '2.5rem',
+      fontWeight: 'bold',
+    },
+    h2: {
+      fontFamily: 'Playfair Display',
+      fontSize: '2rem',
+      fontWeight: 'bold',
+    },
+    h3: {
+      fontFamily: 'Playfair Display',
+      fontSize: '1.75rem',
+      fontWeight: 'bold',
+    },
+    h4: {
+      fontFamily: 'Playfair Display',
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+    },
+    h5: {
+      fontFamily: 'Playfair Display',
+      fontSize: '1.25rem',
+      fontWeight: 'bold',
+    },
+    h6: {
+      fontFamily: 'Playfair Display',
+      fontSize: '1rem',
+      fontWeight: 'bold',
+    },
+    body1: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1.5rem',
+    },
+    body2: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+    subtitle1: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+    subtitle2: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+    caption: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+    button: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+    overline: {
+      fontFamily: ['Roboto', 'sans-serif'].join(','),
+      fontSize: '1rem',
+    },
+  },
 })
