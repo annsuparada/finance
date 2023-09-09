@@ -2,27 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, TextField, useMediaQuery } from '@mui/material'
-import { mobleView, primary, secondary } from '../../theme'
+import { mobleView, primary, secondary, tabletView } from '../../theme'
 import SocialMediaLinks from '../molecular/SocialMediaLinks'
 import NavLinks from '../molecular/NavLinks'
 
 const NavBar: React.FC = () => {
   const isMobile = useMediaQuery(`(max-width:${mobleView})`)
-  console.log('isMobile', isMobile)
+  const isTablet = useMediaQuery(`(max-width:${tabletView})`)
+
   const styles = {
     grid: {
       display: 'grid',
-      gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+      gridTemplateColumns: isTablet ? '1fr' : 'repeat(3, 1fr)',
       minHeight: '100px',
       backgroundColor: primary,
     },
     icons: {
       padding: '10px',
-      justifySelf: isMobile ? 'center' : 'start',
+      justifySelf: isTablet ? 'center' : 'start',
     },
     searchBar: {
-      justifySelf: 'end',
-      width: isMobile ? '100%' : '80%',
+      justifySelf: isTablet ? 'center' : 'end',
+      width: isMobile ? '100%' : '450px',
     },
     logo: {
       margin: 'auto auto',
