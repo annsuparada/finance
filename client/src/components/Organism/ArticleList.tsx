@@ -1,5 +1,6 @@
+import { useMediaQuery } from '@mui/material'
 import React from 'react'
-import { primary } from '../../theme'
+import { desktopView, mobleView, primary, tabletView } from '../../theme'
 import Loading from '../atom/Loading'
 import BigCard from '../molecular/BigCard'
 import SmallCard from '../molecular/SmallCard'
@@ -10,15 +11,24 @@ interface ArticlesProps {
 }
 
 const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
+  const isMobile = useMediaQuery(`(max-width:${mobleView})`)
+  const isTablet = useMediaQuery(`(max-width:${tabletView})`)
+  const isDesktop = useMediaQuery(`(max-width:${desktopView})`)
+
   const styles = {
     grid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
+      gridTemplateColumns: isMobile
+        ? '1fr'
+        : isTablet
+        ? 'repeat(2, 1fr)'
+        : 'repeat(4, 1fr)',
       gap: '1.5rem',
+      padding: isDesktop ? '7px' : '0',
     },
     item1: {
-      gridRow: '1 / span 2',
-      gridColumn: '1 / span 2',
+      gridRow: isMobile ? '1' : '1 / span 2',
+      gridColumn: isMobile ? '1' : '1 / span 2',
       justifySelf: 'stretch',
     },
     divider: {
@@ -45,11 +55,10 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
 
           <div style={styles.grid}>
             {articles.map((item, index) => (
-              <>
-                {index === 1 ? (
+              <React.Fragment key={item.id}>
+                {item.slug === 'what-is-a-roth-ira-1' ? (
                   <div style={styles.item1}>
                     <BigCard
-                      key={item.id}
                       id={item.id}
                       alt={item.alt}
                       title={item.title}
@@ -61,7 +70,6 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
                   </div>
                 ) : (
                   <SmallCard
-                    key={item.id}
                     id={item.id}
                     alt={item.alt}
                     title={item.title}
@@ -71,7 +79,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
                     intro={item.intro}
                   />
                 )}
-              </>
+              </React.Fragment>
             ))}
           </div>
 
