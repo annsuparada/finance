@@ -9,6 +9,8 @@ export const lightRed = '#ff6961'
 export const ligthYellow = '#ffd700'
 export const lightGreen = '#2ecc71'
 
+export const mobleView = '820px'
+
 export const theme = createTheme({
   palette: {
     primary: {
