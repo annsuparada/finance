@@ -17,6 +17,7 @@ const initialState: ArticleState = {
     alt: '',
     articleContent: '',
     slug: '',
+    intro: '',
   },
   loading: false,
   error: '',
@@ -41,6 +42,7 @@ const articlesSlice = createSlice({
           alt: item.alt,
           slug: item.slug,
           articleContent: item.articleContent,
+          intro: item.intro,
         }))
       })
       .addCase(fetchArticles.rejected, (state, action) => {

@@ -5,4 +5,5 @@ interface Article {
   alt: string
   slug: string
   articleContent: string
+  intro: string
 }

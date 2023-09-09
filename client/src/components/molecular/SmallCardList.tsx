@@ -35,6 +35,7 @@ const SmallCardList: React.FC<SmallCardListProps> = ({
             imageURL={item.imageURL}
             articleContent={item.articleContent}
             slug={item.slug}
+            intro={item.intro}
           />
         ))}
       </div>

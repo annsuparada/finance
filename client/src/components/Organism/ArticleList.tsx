@@ -56,6 +56,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
                       imageURL={item.imageURL}
                       articleContent={item.articleContent}
                       slug={item.slug}
+                      intro={item.intro}
                     />
                   </div>
                 ) : (
@@ -67,6 +68,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
                     imageURL={item.imageURL}
                     articleContent={item.articleContent}
                     slug={item.slug}
+                    intro={item.intro}
                   />
                 )}
               </>
@@ -86,6 +88,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
                 imageURL={item.imageURL}
                 articleContent={item.articleContent}
                 slug={item.slug}
+                intro={item.intro}
               />
             ))}
           </div>
