@@ -7,15 +7,18 @@ interface ImageHeaderProps {
 const ImageHeader: React.FC<ImageHeaderProps> = ({ imageURL, alt }) => {
   const styles = {
     container: {
-      width: '1280px',
-      height: '60vh',
+      maxWidth: '1280px',
       margin: '0 auto',
-      backgroundImage: `url(${imageURL})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+    },
+    img: {
+      width: '100%',
     },
   }
-  return <div style={styles.container}></div>
+  return (
+    <div style={styles.container}>
+      <img src={imageURL} alt={alt} style={styles.img} />
+    </div>
+  )
 }
 
 export default ImageHeader
