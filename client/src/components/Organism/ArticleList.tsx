@@ -1,6 +1,6 @@
 import { useMediaQuery } from '@mui/material'
 import React from 'react'
-import { desktopView, mobleView, primary, tabletView } from '../../theme'
+import { desktopView, mobileView, primary, tabletView } from '../../theme'
 import Loading from '../atom/Loading'
 import BigCard from '../molecular/BigCard'
 import SmallCard from '../molecular/SmallCard'
@@ -11,7 +11,7 @@ interface ArticlesProps {
 }
 
 const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
-  const isMobile = useMediaQuery(`(max-width:${mobleView})`)
+  const isMobile = useMediaQuery(`(max-width:${mobileView})`)
   const isTablet = useMediaQuery(`(max-width:${tabletView})`)
   const isDesktop = useMediaQuery(`(max-width:${desktopView})`)
 

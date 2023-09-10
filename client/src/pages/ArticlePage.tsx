@@ -8,9 +8,10 @@ import {
   fetchArticles,
 } from '../store/actions/articleActions'
 import HeaderWrapper from '../components/atom/HeaderWeapper'
-import { secondary } from '../theme'
+import { secondary, tabletView } from '../theme'
 import MainWrapper from '../components/atom/MainWrapper'
 import SmallCardList from '../components/molecular/SmallCardList'
+import { useMediaQuery } from '@mui/material'
 
 const Article: React.FC = () => {
   const { slug } = useParams()
@@ -18,6 +19,8 @@ const Article: React.FC = () => {
   const article = useAppSelector((state) => state.articles.article)
   const articles = useAppSelector((state) => state.articles.articles)
   const loading = useAppSelector((state) => state.articles.loading)
+
+  const isTablet = useMediaQuery(`(max-width:${tabletView})`)
 
   useEffect(() => {
     if (slug) {
@@ -29,7 +32,7 @@ const Article: React.FC = () => {
   const styles = {
     title: {
       margin: '3rem 0 3rem 0',
-      fontSize: '3rem',
+      fontSize: isTablet ? '2rem' : '3rem',
       color: `${secondary}`,
       textAlign: 'center' as 'center',
     },

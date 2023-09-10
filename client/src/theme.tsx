@@ -9,7 +9,7 @@ export const lightRed = '#ff6961'
 export const ligthYellow = '#ffd700'
 export const lightGreen = '#2ecc71'
 
-export const mobleView = '600px'
+export const mobileView = '600px'
 export const tabletView = '850px'
 export const desktopView = '1280px'
 
