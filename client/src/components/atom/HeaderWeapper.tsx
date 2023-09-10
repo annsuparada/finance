@@ -7,9 +7,8 @@ interface HeaderWrapperProps {
 const HeaderWrapper: React.FC<HeaderWrapperProps> = ({ children }) => {
   const styles = {
     container: {
-      width: '100%',
       backgroundColor: `${primary}`,
-      padding: '2rem 0 3rem',
+      padding: '4rem 2rem 2rem 2rem',
     },
   }
   return <div style={styles.container}>{children}</div>

@@ -12,6 +12,7 @@ const ImageHeader: React.FC<ImageHeaderProps> = ({ imageURL, alt }) => {
     },
     img: {
       width: '100%',
+      height: 'auto',
     },
   }
   return (
