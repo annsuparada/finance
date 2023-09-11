@@ -8,6 +8,7 @@ import InvestingPage from './pages/InvestingPage'
 import CalculatorPage from './pages/CalculatorPage'
 import Footer from './components/Organism/Footer'
 import Article from './pages/ArticlePage'
+import AboutPage from './pages/AboutPage'
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Route path="/investing" element={<InvestingPage />} />
           <Route path="/investing/:slug" element={<Article />} />
           <Route path="/calculator" element={<CalculatorPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
         <Footer />
       </Router>

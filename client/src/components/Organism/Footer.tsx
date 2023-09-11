@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
       </div>
       <div style={styles.gridItem}>
         <h3 style={styles.text}>About Us</h3>
-        <Link to="/" className="footer-links">
+        <Link to="/about" className="footer-links">
           About Us
         </Link>
         <Link to="/" className="footer-links">
