@@ -11,7 +11,6 @@ const Divider: React.FC<DividerProps> = ({ text, fontSize, color }) => {
     divider: {
       width: '100%',
       borderBottom: `2px solid ${color}`,
-      padding: '5px',
       margin: '30px 0 25px 0',
     },
     heading: {

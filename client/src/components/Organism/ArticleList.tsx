@@ -1,6 +1,7 @@
 import { useMediaQuery } from '@mui/material'
 import React from 'react'
-import { desktopView, mobileView, primary, tabletView } from '../../theme'
+import { desktopView, mobileView, tabletView } from '../../theme'
+import Divider from '../atom/Divider'
 import Loading from '../atom/Loading'
 import BigCard from '../molecular/BigCard'
 import SmallCard from '../molecular/SmallCard'
@@ -31,16 +32,6 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
       gridColumn: isMobile ? '1' : '1 / span 2',
       justifySelf: 'stretch',
     },
-    divider: {
-      width: '100%',
-      borderBottom: `2px solid ${primary}`,
-      padding: '5px',
-      margin: '30px 0 25px 0',
-    },
-    heading: {
-      margin: 0,
-      fontSize: '45px',
-    },
   }
 
   return (
@@ -49,9 +40,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
         <Loading />
       ) : (
         <div>
-          <div style={styles.divider}>
-            <h1 style={styles.heading}>Investing</h1>
-          </div>
+          <Divider text="Investing" />
 
           <div style={styles.grid}>
             {articles.map((item, index) => (
@@ -83,9 +72,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, loading }) => {
             ))}
           </div>
 
-          <div style={styles.divider}>
-            <h1 style={styles.heading}>Latest</h1>
-          </div>
+          <Divider text="Latest" />
           <div style={styles.grid}>
             {articles.map((item, index) => (
               <SmallCard

@@ -12,6 +12,7 @@ import { secondary, tabletView } from '../theme'
 import MainWrapper from '../components/atom/MainWrapper'
 import SmallCardList from '../components/molecular/SmallCardList'
 import { useMediaQuery } from '@mui/material'
+import Divider from '../components/atom/Divider'
 
 const Article: React.FC = () => {
   const { slug } = useParams()
@@ -83,7 +84,10 @@ const Article: React.FC = () => {
                   __html: article?.articleContent || '',
                 }}
               />
-              <SmallCardList articles={articles} numberOfColumn={1} />
+              <div>
+                <Divider text="Recent Posts" fontSize="28px" />
+                <SmallCardList articles={articles} numberOfColumn={1} />
+              </div>
             </div>
           </MainWrapper>
         </div>
