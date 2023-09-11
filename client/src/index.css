@@ -9,11 +9,41 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-size: 2rem;
+}
 
 h2 {
+  font-size: 1.5rem;
   margin: 2.5rem 0 2.5rem 0;
 }
 
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
 p {
   font-size: 20px;
 }
+
+.footer-links {
+  color: #ffff;
+  text-decoration: none;
+  transition: 0.3s;
+  margin-bottom: 7px;
+  }
+  .footer-links:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
