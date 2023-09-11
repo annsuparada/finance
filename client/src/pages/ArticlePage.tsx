@@ -54,7 +54,7 @@ const Article: React.FC = () => {
     },
     contentWrapper: {
       display: 'grid',
-      gridTemplateColumns: '3fr 1fr',
+      gridTemplateColumns: isTablet ? '1fr' : '3fr 1fr',
       marginTop: '2rem',
       gap: '3rem',
     },
@@ -78,7 +78,6 @@ const Article: React.FC = () => {
           </HeaderWrapper>
           <MainWrapper>
             <div style={styles.contentWrapper}>
-              {/* <p style={styles.p}>{article?.articleContent}</p> */}
               <div
                 dangerouslySetInnerHTML={{
                   __html: article?.articleContent || '',

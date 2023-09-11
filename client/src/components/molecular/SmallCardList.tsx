@@ -1,17 +1,29 @@
+import { useMediaQuery } from '@mui/material'
 import React from 'react'
+import { mobileView, tabletView } from '../../theme'
 import SmallCard from './SmallCard'
 
 interface SmallCardListProps {
   articles: Article[]
-  numberOfColumn?: number
   wrapperWidth?: string
+  numberOfColumn?: number
+  tabletViewColumn?: number
+  mobileViewColumn?: number
 }
 const SmallCardList: React.FC<SmallCardListProps> = ({
   articles,
   numberOfColumn,
   wrapperWidth,
+  tabletViewColumn,
+  mobileViewColumn,
 }) => {
-  const column = numberOfColumn || 4
+  const isTablet = useMediaQuery(`(max-width:${tabletView})`)
+  const isMoblie = useMediaQuery(`(max-width:${mobileView})`)
+  const column = isMoblie
+    ? mobileViewColumn
+    : isTablet
+    ? tabletViewColumn
+    : numberOfColumn
   const styles = {
     grid: {
       display: 'grid',
@@ -19,7 +31,7 @@ const SmallCardList: React.FC<SmallCardListProps> = ({
       gap: '1.5rem',
     },
     wrapper: {
-      maxWidth: wrapperWidth || '1280px',
+      maxWidth: wrapperWidth,
       margin: '0 auto',
     },
   }
@@ -43,4 +55,10 @@ const SmallCardList: React.FC<SmallCardListProps> = ({
   )
 }
 
+SmallCardList.defaultProps = {
+  numberOfColumn: 4,
+  tabletViewColumn: 2,
+  mobileViewColumn: 1,
+  wrapperWidth: '1280px',
+}
 export default SmallCardList

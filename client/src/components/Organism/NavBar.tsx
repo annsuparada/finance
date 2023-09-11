@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, TextField, useMediaQuery } from '@mui/material'
-import { mobleView, primary, secondary, tabletView } from '../../theme'
+import { mobileView, primary, secondary, tabletView } from '../../theme'
 import SocialMediaLinks from '../molecular/SocialMediaLinks'
 import NavLinks from '../molecular/NavLinks'
 
 const NavBar: React.FC = () => {
-  const isMobile = useMediaQuery(`(max-width:${mobleView})`)
+  const isMobile = useMediaQuery(`(max-width:${mobileView})`)
   const isTablet = useMediaQuery(`(max-width:${tabletView})`)
 
   const styles = {
