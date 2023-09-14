@@ -6,6 +6,7 @@ import compression from 'compression'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import router from '../router'
 
 dotenv.config()
 const app = express()
@@ -33,3 +34,5 @@ const MONGO_URL = `mongodb+srv://${dbUsername}:${dbPassward}@finance.dv8bx0d.mon
 mongoose.Promise = Promise
 mongoose.connect(MONGO_URL)
 mongoose.connection.on('error', (error: Error) => console.log(error))
+
+app.use('/', router())
