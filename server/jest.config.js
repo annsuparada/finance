@@ -1,5 +1,9 @@
 module.exports = {
   setupFiles: [],
+  verbose: true,
+  transform: {
+      '^.+\\.tsx?$': 'ts-jest',
+  },
   transformIgnorePatterns: [
       "/node_modules/"
   ],

@@ -4,11 +4,12 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
 import cors from 'cors'
-import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import router from '../router'
+import { config } from 'dotenv'
 
-dotenv.config()
+config()
+
 const app = express()
 
 app.use(
