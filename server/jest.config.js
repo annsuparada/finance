@@ -1,7 +1,10 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
+  setupFiles: [],
+  transformIgnorePatterns: [
+      "/node_modules/"
+  ],
+  testPathIgnorePatterns: [
+      "/node_modules/"
+  ],
+  watchman: true,
 };

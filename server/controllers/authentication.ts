@@ -6,6 +6,11 @@ dotenv.config()
 
 const SECRET = process.env.SECRET
 
+interface errorObject {
+  code: string
+  message: string
+}
+
 export const login = async (req: express.Request, res: express.Response) => {
   try {
     const { email, password } = req.body
@@ -55,21 +60,44 @@ export const login = async (req: express.Request, res: express.Response) => {
 export const register = async (req: express.Request, res: express.Response) => {
   try {
     const { email, password, username } = req.body
-    if (!email || !password || !username) {
-      return res.sendStatus(400).json({ message: 'test error' })
+    const errorMessages: errorObject[] = []
+
+    if (!email) {
+      errorMessages.push({
+        code: 'requiredEmail',
+        message: 'Email is required',
+      })
+    } else if (!password) {
+      errorMessages.push({
+        code: 'requiredPassword',
+        message: 'Password is required',
+      })
+    } else if (!username) {
+      errorMessages.push({
+        code: 'requiredUsername',
+        message: 'Username is required',
+      })
     }
 
     const existingUser = await getUserByEmail(email)
     const existingUsername = await getUserByUsername(username)
     if (existingUser) {
-      return res
-        .sendStatus(400)
-        .json({ message: 'This email is already in use.' })
+      errorMessages.push({
+        code: 'emailExists',
+        message: 'This email is already in use.',
+      })
     }
     if (existingUsername) {
-      return res
-        .sendStatus(400)
-        .json({ message: 'This username is already taken.' })
+      errorMessages.push({
+        code: 'usernameExists',
+        message: 'This username is already taken.',
+      })
+    }
+
+    if (errorMessages.length > 0) {
+      return res.status(400).json({
+        errors: errorMessages,
+      })
     }
 
     const salt = random()
@@ -85,6 +113,6 @@ export const register = async (req: express.Request, res: express.Response) => {
     return res.status(201).json(user).end()
   } catch (error) {
     console.log(error)
-    return res.sendStatus(400).json({ message: 'catch error' })
+    return res.status(500).json(error)
   }
 }
