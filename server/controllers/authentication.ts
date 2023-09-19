@@ -30,7 +30,8 @@ export const login = async (postBody: loginPostBodyObj) => {
       code: 'requiredEmail',
       message: 'Email is required',
     })
-  } else if (!password) {
+  }
+  if (!password) {
     errorMessages.push({
       code: 'requiredPassword',
       message: 'Password is required',
@@ -83,21 +84,23 @@ export const register = async (postBody: registerPostBodyObj) => {
       code: 'requiredEmail',
       message: 'Email is required',
     })
-  } else if (!password) {
+  }
+  if (!password) {
     errorMessages.push({
       code: 'requiredPassword',
       message: 'Password is required',
     })
-  } else if (!username) {
+  }
+  if (!username) {
     errorMessages.push({
       code: 'requiredUsername',
       message: 'Username is required',
     })
   }
 
-  const existingUser = await getUserByEmail(email)
+  const existingEmail = await getUserByEmail(email)
   const existingUsername = await getUserByUsername(username)
-  if (existingUser) {
+  if (existingEmail) {
     errorMessages.push({
       code: 'emailExists',
       message: 'This email is already in use.',
@@ -114,6 +117,7 @@ export const register = async (postBody: registerPostBodyObj) => {
     return { errors: errorMessages }
   }
 
+  console.log('errorMessages===', errorMessages)
   const salt = random()
   const user = await createUser({
     email,
