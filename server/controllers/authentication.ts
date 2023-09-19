@@ -1,4 +1,3 @@
-import express from 'express'
 import { createUser, getUserByEmail, getUserByUsername } from '../db/users'
 import { authentication, random } from '../helpers'
 import { config } from 'dotenv'
