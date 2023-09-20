@@ -24,6 +24,14 @@ jest.mock('../db/users', () => ({
       return {
         email: 'existing.email@example.com',
         username: 'existingUsername',
+        authentication: {
+          salt: 'abcdefg',
+          password: '123456',
+          sessionToken: 'session-token-value',
+        },
+        isAdmin: false,
+        _id: 'user-id',
+        save: jest.fn(),
       }
     }
     return null
@@ -39,6 +47,10 @@ jest.mock('../db/users', () => ({
   }),
 }))
 
+jest.mock('../helpers', () => ({
+  authentication: jest.fn().mockReturnValue('123456'),
+  random: jest.fn().mockReturnValue('abcdefg'),
+}))
 const mockResponse = () => {
   const res = {} as express.Response
   res.status = jest.fn().mockReturnValue(res)
@@ -226,5 +238,34 @@ describe('login', () => {
 
     const actualOutput = await login(input)
     expect(actualOutput).toEqual(expectedOutput)
+  })
+
+  it('should return user if get corret email and password for login', async () => {
+    const input = {
+      email: 'existing.email@example.com',
+      password: 'mocked-password',
+    }
+
+    const expectedOutput = {
+      user: {
+        email: 'existing.email@example.com',
+        username: 'existingUsername',
+        authentication: {
+          salt: 'abcdefg',
+          password: '123456',
+          sessionToken: '123456',
+        },
+        isAdmin: false,
+        _id: 'user-id',
+        save: jest.fn(),
+      },
+    }
+
+    const actualOutput = await login(input)
+    console.log('actual output', actualOutput)
+    console.log('expected output', expectedOutput)
+    // expect(authentication).toHaveBeenCalledWith('abcdefg', 'mocked-password')
+    // expect(user.save).toHaveBeenCalled()
+    expect(actualOutput.user.email).toEqual(expectedOutput.user.email)
   })
 })

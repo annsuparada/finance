@@ -59,7 +59,10 @@ export const login = async (postBody: loginPostBodyObj) => {
     user?.authentication?.salt || '',
     password,
   )
-
+  console.log('authentication', user?.authentication)
+  console.log('password', user?.authentication?.password)
+  console.log('user===', user)
+  console.log('function', authentication)
   if (!user?.authentication || user?.authentication.password !== expectedHash) {
     errorMessages.push({
       code: 'InvalidCredentials',
