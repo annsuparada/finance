@@ -25,6 +25,7 @@ export const login = async (postBody: loginPostBodyObj) => {
   const { email, password } = postBody
   const errorMessages: errorObject[] = []
 
+  // required email and password
   if (!email) {
     errorMessages.push({
       code: 'requiredEmail',
@@ -38,15 +39,20 @@ export const login = async (postBody: loginPostBodyObj) => {
     })
   }
 
-  const user = await getUserByEmail(email).select(
-    '+authentication.salt +authentication.password',
-  )
+  if (errorMessages.length > 0) {
+    return { errors: errorMessages }
+  }
+
+  // check credentials
+  const user = await getUserByEmail(email)
 
   if (!user) {
     errorMessages.push({
       code: 'emailNotExists',
       message: 'Email does not exist',
     })
+    // no need to check password if email does not exist
+    return { errors: errorMessages }
   }
 
   const expectedHash = authentication(
@@ -117,7 +123,6 @@ export const register = async (postBody: registerPostBodyObj) => {
     return { errors: errorMessages }
   }
 
-  console.log('errorMessages===', errorMessages)
   const salt = random()
   const user = await createUser({
     email,

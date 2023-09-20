@@ -1,6 +1,6 @@
 // @ts-nocheck
 import * as crypto from 'crypto'
-import { register } from '../controllers/authentication'
+import { register, login } from '../controllers/authentication'
 
 // Mock crypto.randomBytes
 jest
@@ -140,6 +140,91 @@ describe('register', () => {
     }
 
     const actualOutput = await register(input)
+    expect(actualOutput).toEqual(expectedOutput)
+  })
+})
+
+describe('login', () => {
+  beforeEach(() => {
+    process.env.SECRET = 'TEST-AUTH'
+  })
+  it('should return requiredEmail if there is no email for login', async () => {
+    const input = {
+      email: '',
+      password: 'test',
+    }
+
+    const expectedOutput = {
+      errors: [
+        {
+          code: 'requiredEmail',
+          message: 'Email is required',
+        },
+      ],
+    }
+
+    const actualOutput = await login(input)
+    expect(actualOutput).toEqual(expectedOutput)
+  })
+
+  it('should return requiredEmail adn requiredPassword if there is no email and password for login', async () => {
+    const input = {
+      email: '',
+      password: '',
+    }
+
+    const expectedOutput = {
+      errors: [
+        {
+          code: 'requiredEmail',
+          message: 'Email is required',
+        },
+        {
+          code: 'requiredPassword',
+          message: 'Password is required',
+        },
+      ],
+    }
+
+    const actualOutput = await login(input)
+    expect(actualOutput).toEqual(expectedOutput)
+  })
+
+  it('should return emailNotExists if there is email does not exist for login', async () => {
+    const input = {
+      email: 'test-email@email.com',
+      password: 'test',
+    }
+
+    const expectedOutput = {
+      errors: [
+        {
+          code: 'emailNotExists',
+          message: 'Email does not exist',
+        },
+      ],
+    }
+
+    const actualOutput = await login(input)
+    expect(actualOutput).toEqual(expectedOutput)
+  })
+
+  it('should return InvalidCredentials if get the wrong password for login', async () => {
+    const input = {
+      email: 'existing.email@example.com',
+      password: 'test',
+    }
+
+    const expectedOutput = {
+      errors: [
+        {
+          code: 'InvalidCredentials',
+          message: 'Invalid credentials',
+        },
+      ],
+    }
+
+    const actualOutput = await login(input)
     expect(actualOutput).toEqual(expectedOutput)
   })
 })
